@@ -1,0 +1,12 @@
+COMPLETE DETECTION PIPELINE - STATISTICS
+======================================================================
+
+total_detections: 5
+total_time_seconds: 28.339977
+avg_time_per_detection: 5.667995400000001
+label_distribution: {'Normal': 4, 'Suspicious': 1}
+severity_distribution: {'Low': 4, 'High': 1}
+total_blocked: 0
+attack_count: 0
+normal_count: 4
+suspicious_count: 1

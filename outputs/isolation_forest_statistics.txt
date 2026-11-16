@@ -1,0 +1,29 @@
+============================================================
+ISOLATION FOREST ANOMALY SCORE STATISTICS
+============================================================
+
+Threshold: 0.05
+
+NORMAL SAMPLES (n=200):
+  Mean score:   0.0920
+  Median score: 0.1102
+  Std dev:      0.0614
+  Min score:    -0.1066
+  Max score:    0.1546
+  Classified as Normal:     159 (79.5%)
+  Classified as Suspicious: 41 (20.5%)
+
+ATTACK SAMPLES (n=200):
+  Mean score:   0.0585
+  Median score: 0.0568
+  Std dev:      0.0663
+  Min score:    -0.1724
+  Max score:    0.1515
+  Classified as Suspicious: 67 (33.5%)
+  Classified as Normal:     133 (66.5%)
+
+PERFORMANCE METRICS:
+  Detection Rate:       33.5%
+  False Positive Rate:  20.5%
+  True Negative Rate:   79.5%
+  False Negative Rate:  66.5%

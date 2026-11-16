@@ -1,0 +1,267 @@
+<mxfile host="app.diagrams.net" modified="2025-12-27T07:38:00.000Z" agent="5.0" version="24.0.0" etag="draw.io" type="device">
+  <diagram name="Data Flow Diagram" id="data-flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="Figure Y: Data Flow Diagram of Real-Time Intrusion Detection System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="750" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- DATA SOURCES -->
+        <mxCell id="source-bg" value="DATA SOURCES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5FF;strokeColor=#0066CC;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="csv-input" value="CSV Row Input&#xa;16 Raw Features&#xa;+ Metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0066CC;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="manual-request" value="Manual Detection&#xa;Request&#xa;User Form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0066CC;" vertex="1" parent="1">
+          <mxGeometry x="190" y="110" width="110" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- PREPROCESSING -->
+        <mxCell id="preprocess-bg" value="PREPROCESSING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E1;strokeColor=#FF9900;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="280" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline-entry" value="Detection Pipeline&#xa;Entry Point" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="380" y="110" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="feature-deriv" value="Feature Derivation&#xa;16 Raw → 12 Engineered" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="380" y="175" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="median-imp" value="Median Imputation&#xa;Frozen Medians" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="380" y="240" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="protocol-enc" value="Protocol Encoding&#xa;Frozen OneHotEncoder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="380" y="305" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="scaling" value="Feature Scaling&#xa;Frozen StandardScaler&#xa;Result: 142 Features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF9900;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="100" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- HYBRID MODEL INFERENCE -->
+        <mxCell id="model-bg" value="HYBRID MODEL INFERENCE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE1E1;strokeColor=#CC0000;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="80" width="280" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="random-forest" value="Random Forest&#xa;300 Trees" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="110" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rf-decision" value="RF Probability&#xa;≥ 0.40?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="820" y="100" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="isolation-forest" value="Isolation Forest&#xa;Anomaly Detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="if-decision" value="IF Score&#xa;&lt; 0.05?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="820" y="175" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="output-layer" value="Output Layer&#xa;Confidence, Risk,&#xa;Severity Computation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="260" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- DECISION LOGIC -->
+        <mxCell id="decision-bg" value="DECISION LOGIC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE1CC;strokeColor=#FF6600;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="80" width="180" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="label-attack" value="Label: Attack" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6600;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="110" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="label-suspicious" value="Label: Suspicious" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6600;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="160" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="label-normal" value="Label: Normal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FF6600;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="210" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CONDITIONAL ACTIONS -->
+        <mxCell id="action-bg" value="CONDITIONAL ACTIONS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1FFE1;strokeColor=#009900;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="310" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="is-attack" value="Is Attack?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#009900;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="trigger-block" value="Trigger&#xa;Auto-Blocking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#009900;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="340" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="log-only" value="Log Only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#009900;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="405" width="80" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- DATA STORAGE -->
+        <mxCell id="storage-bg" value="DATA STORAGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0E1FF;strokeColor=#9900CC;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="480" width="180" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlite-db" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFFFFF;strokeColor=#9900CC;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="510" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db-label" value="SQLite Database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="530" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="store-detection" value="Store Detection&#xa;Results" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9900CC;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="585" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="store-blocked" value="Store Blocked&#xa;Threats" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9900CC;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="585" width="70" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- OUTPUT FLOW -->
+        <mxCell id="output-bg" value="OUTPUT FLOW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE1F0;strokeColor=#CC0066;strokeWidth=2;fontSize=14;fontStyle=1;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="360" y="480" width="600" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="emit-ws" value="Emit WebSocket&#xa;Events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="380" y="510" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="stats-update" value="stats_update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="500" y="510" width="90" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="detection-event" value="detection_event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="500" y="555" width="90" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="blocked-event" value="blocked_event" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="500" y="600" width="90" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-receive" value="Frontend Receives&#xa;Updates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="620" y="535" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="update-ui" value="Update KPIs,&#xa;Charts, Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CC0066;" vertex="1" parent="1">
+          <mxGeometry x="760" y="535" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Sources to Pipeline -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="csv-input" target="pipeline-entry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="manual-request" target="pipeline-entry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Preprocessing flow -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="pipeline-entry" target="feature-deriv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="feature-deriv" target="median-imp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="median-imp" target="protocol-enc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="protocol-enc" target="scaling">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Preprocessing to Models -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="scaling" target="random-forest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Model flow -->
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="random-forest" target="rf-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow9" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="rf-decision" target="label-attack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow10" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="rf-decision" target="isolation-forest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="isolation-forest" target="if-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow12" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="if-decision" target="label-suspicious">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow13" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="if-decision" target="label-normal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="880" y="260" as="sourcePoint" />
+            <mxPoint x="1090" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ARROWS: Labels to Output Layer -->
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="label-attack" target="output-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="label-suspicious" target="output-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="label-normal" target="output-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Output Layer to Actions -->
+        <mxCell id="arrow17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="output-layer" target="is-attack">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Conditional Actions -->
+        <mxCell id="arrow18" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="is-attack" target="trigger-block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow19" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="is-attack" target="log-only">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1170" y="370" />
+              <mxPoint x="1170" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ARROWS: Actions to Storage -->
+        <mxCell id="arrow20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="trigger-block" target="store-blocked">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="log-only" target="store-detection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1250" y="470" />
+              <mxPoint x="1055" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="trigger-block" target="store-detection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1250" y="470" />
+              <mxPoint x="1055" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ARROWS: Storage to Output -->
+        <mxCell id="arrow23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="sqlite-db" target="emit-ws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: WebSocket events -->
+        <mxCell id="arrow24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="emit-ws" target="stats-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="emit-ws" target="detection-event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="emit-ws" target="blocked-event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROWS: Events to Frontend -->
+        <mxCell id="arrow27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="stats-update" target="frontend-receive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="detection-event" target="frontend-receive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="blocked-event" target="frontend-receive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW: Frontend to UI Update -->
+        <mxCell id="arrow30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="frontend-receive" target="update-ui">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

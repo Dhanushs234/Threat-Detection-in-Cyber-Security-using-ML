@@ -1,0 +1,28 @@
+{
+  "hybrid_version": "v1.0-final",
+  "decision_logic": "RF -> IF cascade",
+  "rf_threshold": 0.40,
+  "if_threshold": 0.05,
+  "final_labels": ["Attack", "Suspicious", "Normal"],
+  "features": 142,
+  "status": "FROZEN",
+  "freeze_date": "2025-12-23",
+  "note": "Hybrid decision logic and thresholds are immutable. Any modification requires full system retraining and revalidation.",
+  "artifacts": {
+    "rf_model": "models/rf_model.pkl",
+    "isolation_forest": "models/isolation_forest.pkl",
+    "scaler": "models/scaler.pkl",
+    "feature_columns": "models/feature_columns.pkl",
+    "medians": "models/medians.pkl",
+    "encoder": "models/encoder.pkl",
+    "rf_config": "models/rf_config.json",
+    "if_config": "models/if_config.json"
+  },
+  "decision_rules": [
+    "1. Random Forest evaluated first",
+    "2. If RF predicts ATTACK → Final = ATTACK",
+    "3. If RF predicts NORMAL → Isolation Forest evaluated",
+    "4. If IF anomaly score < 0.05 → Final = SUSPICIOUS",
+    "5. Else → Final = NORMAL"
+  ]
+}

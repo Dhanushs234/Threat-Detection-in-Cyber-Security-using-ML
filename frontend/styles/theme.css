@@ -1,0 +1,217 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.threat-map-wrapper {
+  width: 100%;
+  height: 460px;
+  margin-top: 24px;
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(18, 23, 31, 0.95) 0%, rgba(10, 14, 22, 0.95) 100%);
+  overflow: hidden;
+}
+
+.threat-map-tooltip {
+  background: rgba(14, 19, 26, 0.94);
+  color: #dce6f5;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.threat-map-fullscreen {
+  position: fixed !important;
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999;
+  background: #1c1f24;
+}
+
+.leaflet-container {
+  background: #2a2e33 !important;
+}
+
+.leaflet-control-container {
+  display: none !important;
+}
+
+:root {
+  --bg-main: #070B14;
+  --bg-panel: #0B1220;
+  --bg-card: #0F172A;
+  --border: #1E293B;
+
+  --text-primary: #E6EDF3;
+  --text-muted: #94A3B8;
+}
+
+@keyframes shieldPulse {
+  0% {
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+  }
+}
+
+.shield-glow {
+  animation: shieldPulse 1.8s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    @apply rounded-lg shadow-lg;
+  }
+
+  .dashboard-content {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: box-shadow 3s ease;
+    background-color: var(--bg-panel);
+  }
+
+  .dashboard-content.attack-glow {
+    box-shadow: 0 0 18px rgba(231, 76, 60, 0.6), inset 0 0 6px rgba(231, 76, 60, 0.4);
+  }
+
+  .dashboard-middle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .dashboard-chart-card {
+    height: 320px;
+    min-height: 320px;
+    max-height: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chart-wrapper {
+    flex: 1;
+    position: relative;
+  }
+
+  .chart-title {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 1200px) {
+    .dashboard-middle {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .manual-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .manual-page > * {
+    margin-bottom: 0;
+  }
+
+  .network-flow-card,
+  .detection-result-card,
+  .manual-history-card {
+    width: 100%;
+  }
+
+  .detection-result-card {
+    min-height: 140px;
+  }
+
+  .network-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    .network-flow-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .network-flow-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card-header {
+    border-bottom: 1px solid var(--border);
+    @apply px-6 py-4;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors duration-200;
+  }
+  
+  .btn-danger {
+    @apply px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition-colors duration-200;
+  }
+  
+  .btn-success {
+    @apply px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors duration-200;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: background-color 5s ease;
+  }
+
+  .status-dot.normal {
+    background-color: #2ecc71;
+  }
+
+  .status-dot.suspicious {
+    background-color: #f39c12;
+  }
+
+  .status-dot.attack {
+    background-color: #e74c3c;
+  }
+
+  .status-dot.idle {
+    background-color: #4b5563;
+  }
+}
